@@ -19,6 +19,7 @@ module NgrokV1
 
       @log = Tempfile.new("ngrok-v1")
       @pid = Process.spawn(execution_string)
+      Process.detach(@pid)
 
       at_exit { stop } # Ensure process is killed if Ruby exits.
 
